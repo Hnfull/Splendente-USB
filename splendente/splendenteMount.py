@@ -8,7 +8,7 @@ import win32con
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
-searchWinMount = wmi.WMI()
+SEARCH_WIN_MOUNT = wmi.WMI()
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
@@ -18,7 +18,7 @@ class TargetMount():
     def SearchPartitionsMount():
         targetPartitionsMountList = []
 
-        for mountPoint in searchWinMount.Win32_LogicalDisk():
+        for mountPoint in SEARCH_WIN_MOUNT.Win32_LogicalDisk():
             if mountPoint.VolumeName == "RECOVERY" or mountPoint.VolumeName == "USB_DATA" or mountPoint.DeviceID == "C:" or mountPoint.Description == "Disque CD-ROM":
                 continue
             else:
@@ -32,7 +32,7 @@ class UsbMount():
 
     # --- Search letter ID of partition labeled USB_DATA (USB key) --- #
     def SearchUsbMountLetter():    
-        for mountPoint in searchWinMount.Win32_LogicalDisk():
+        for mountPoint in SEARCH_WIN_MOUNT.Win32_LogicalDisk():
             if mountPoint.VolumeName == "USB_DATA":
                 return mountPoint.DeviceID
             else:
@@ -41,7 +41,7 @@ class UsbMount():
     def SearchPartitionsMount():
         usbPartitionMountDirectories = []
 
-        for mountPoint in searchWinMount.Win32_LogicalDisk():
+        for mountPoint in SEARCH_WIN_MOUNT.Win32_LogicalDisk():
             if mountPoint.VolumeName == "RECOVERY" or mountPoint.VolumeName == "USB_DATA" or mountPoint.DeviceID == "C:" or mountPoint.Description == "Disque CD-ROM":
                 continue
             else:
