@@ -28,12 +28,12 @@ import glob
 import shutil
 import sys
 
-from splendenteDirs import Directories
-from splendenteConf import Conf
-from splendenteUtils import Date, SmallSize, MediumSize, HighSize, BigSize
-from splendenteMount import TargetMount, UsbMount
-from splendenteCopy import Copy
-from splendentePersistence import Persistence
+from core.splendenteDirs import Directories
+from core.splendenteConf import Conf
+from core.splendenteUtils import Date, SmallSize, MediumSize, HighSize, BigSize
+from core.splendenteMount import TargetMount, UsbMount
+from core.splendenteCopy import Copy
+from core.splendentePersistence import Persistence
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
