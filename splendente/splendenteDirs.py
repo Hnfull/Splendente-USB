@@ -7,9 +7,9 @@ import glob
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
-class TargetDirectories:
+class Directories:
 
-    def DirectoryFound(dirConf, typeOflist, targetMount, usbMount):
+    def Search(dirConf, typeOflist, targetMount, usbMount):
         targetDirectoriesList = []
         usbDirectoriesList = []
 

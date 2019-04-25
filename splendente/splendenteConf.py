@@ -10,7 +10,7 @@ CONF = configparser.ConfigParser()
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
     
-class ExtConf():
+class Conf():
 
     def Databases(confFile):
         CONF.read(confFile)
@@ -59,9 +59,6 @@ class ExtConf():
         chromeBrowser = CONF.get('EXTENSION', 'ChromeBrowser')
         parseChromeBrowser = chromeBrowser.split(",")
         return parseChromeBrowser
-
-
-class DirsConf:
 
     def Directories(confFile):
         CONF.read(confFile)
