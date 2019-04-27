@@ -36,7 +36,7 @@
   
 - Copy file(s) from USB key to target directory + persistence
 
-### Usages
+### Usages 
 - Rename your USB key to "USB_DATA"
 - Take `agent/`, `splendente/`, `log/` and `conf/` directories and put them in the USB key labeled USB_DATA\
 - Packaged \*.py files  splendente/splendenteUSB.py with pyinstaller -> `pyinstaller -F --noconsole splendenteUSB.py`
@@ -45,7 +45,7 @@
 - Using a multi-USB adapter, insert your Rubber Ducky and USB key labeled "USB_DATA"
 - Plug in your USB adapter!
 
-### Directories of USB Tree :
+### Directories of USB Tree 
 - First USB (USB_DATA) :
   ```
   - USB_DATA -> Name or label of USB key
@@ -65,7 +65,12 @@
 - Manage the files and dirs that you want to copy:
   ```
   - Edit conf/splendente.ini
+  
   ```
+  
+### Next Release
+- Version 1.1
+- Several path additions
 
 ### Licence
 - MIT
