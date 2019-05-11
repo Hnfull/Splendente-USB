@@ -1,7 +1,3 @@
-shutil
-glob
 pywin32
-configparser
-logging
 wmi
 pyinstaller
