@@ -39,7 +39,7 @@
 ### Usages 
 - Rename your USB key to "USB_DATA"
 - Take `agent/`, `splendente/`, `log/` and `conf/` directories and put them in the USB key labeled USB_DATA\
-- Packaged \*.py files  splendente/splendenteUSB.py with pyinstaller -> `pyinstaller -F --noconsole splendenteUSB.py`
+- Packaged \*.py files  splendente/splendenteUSB.py with pyinstaller -> `pyinstaller -F --noconsole splendente_usb.py`
 - (Optional) In `USB_DATA/agent/` directory, place your file that you want copy from USB to target with persistence
 - Take the `rubber_ducky_script/duckycode.txt` file and encode it (https://ducktoolkit.com/encode#), then place the generated `inject.bin` file in your Rubber Ducky
 - Using a multi-USB adapter, insert your Rubber Ducky and USB key labeled "USB_DATA"
@@ -49,7 +49,7 @@
 - First USB (USB_DATA) :
   ```
   - USB_DATA -> Name or label of USB key
-    - USB_DATA/splendente/splendenteUSB.exe -> splendenteUSB.py packaged
+    - USB_DATA/splendente/splendente_usb.exe -> splendente_usb.py packaged
     - USB_DATA/agent/                       -> Copy file(s) from USB key to target + persistence (optional)
     - USB_DATA/conf/splendente.ini          -> Manage files and directories that you want copy
     - USB_DATA/log/splendente.log           -> Traceability of actions
