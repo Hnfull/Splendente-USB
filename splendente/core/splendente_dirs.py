@@ -5,7 +5,7 @@
 import os
 import glob
 
-from core.splendenteError import ERROR_BAD_ARGUMENTS
+from core.splendente_error import ERROR_BAD_ARGUMENTS
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
@@ -24,9 +24,8 @@ class Directories:
         self.firefox        = "Firefox"
         self.chrome         = "Chrome"
         self.otherPartitions = "OtherPartitions"
-
-        self.usb    = "USB"
-        self.target = "Target"
+        self.usb            = "USB"
+        self.target         = "Target"
 
     def Search(self, dirConf, typeOflist, targetMount, usbMount):
         targetDirectoriesList   = []

