@@ -38,7 +38,7 @@ DELAY 500
 ENTER
 
 DELAY 500
-STRING .\splendenteUSB.exe
+STRING .\splendente_usb.exe
 
 DELAY 500
 ENTER
