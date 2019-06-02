@@ -7,12 +7,20 @@
 
 ----------------------------------
 
-
 ---------- [05-05-2019] ----------
 
 - Version 1.0.1
 - Add new versions name of windows registers
 - Code improvement
+
+----------------------------------
+
+---------- [02-06-2019] ----------
+
+- Version 1.0.2
+- Modifying all name of .py files
+- Deleting Error class
+- Slight code improvement
 
 ----------------------------------
 
