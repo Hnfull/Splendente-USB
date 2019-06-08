@@ -9,7 +9,7 @@
 ## Targets
 - Windows platform only
 
-## Platform tested
+## Target platforms tested
 - Windows 7-10
 
 ## Requirement
@@ -18,6 +18,10 @@
 - 1 USB key
 - 1 Rubber Ducky
 - 1 Adaptator with USB multiport (In order to plug your rubber ducky and your USB key)
+
+## Installation
+`git clone https://github.com/Hnfull/Splendente-USB.git`
+`pip3 install -r Splendente-USB\requirement.txt`
 
 ## Features
 - Copy file(s) from target directories to USB key : 
@@ -37,13 +41,10 @@
 - Copy file(s) from USB key to target directory + persistence
 
 ## Usages
-- Download Splendente-USB repos
-- If you download on zip format or other directly from github web site rename all `Splendente-USB-master`directory name into `Splendente-USB` 
-- `pip3 install -r Splendente-USB\requirement.txt`
 - Rename your USB key to 'USB_DATA'
 - Copy `Splendente-USB` repository into USB key labeled 'USB_DATA'
 - Open powershell or cmd and move into your USB key `cd YourLetterKey:\`
-- Move into Splendente-USB directory in your USB key `cd Splendente-USB/splendente`
+- Since your USB key `cd Splendente-USB/splendente`
 - Packaged  `splendente_usb.py` with pyinstaller -> `pyinstaller --specpath setup/ --workpath setup/build --distpath setup/dist --clean -F --noconsole .\splendente_usb.py`
 - (Optional) In `USB_DATA/Splendente-USB/agent/` directory place your file that you want copy from USB to target
 - Take the `Splendente-USB/rubber_ducky_script/duckycode.txt` file and encode it (https://ducktoolkit.com/encode#), then place the generated `inject.bin` file in your Rubber Ducky
