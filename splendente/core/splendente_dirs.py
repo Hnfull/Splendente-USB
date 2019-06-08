@@ -4,6 +4,7 @@
 
 import os
 import glob
+import re
 
 from core.splendente_error import ERROR_BAD_ARGUMENTS
 
@@ -90,7 +91,8 @@ class Directories:
             elif directory == self.otherPartitions:
                 for mount in targetMount:
                     for usbMountDir in usbMount:
-                        if usbMountDir in mount:
+                        usbMountDir = usbMountDir[0]
+                        if re.match(r"\w", usbMountDir) and usbMountDir != "G":
                             targetDirectoriesList.append(mount)
                             usbDirectoriesList.append(usbMountDir)
             else:
