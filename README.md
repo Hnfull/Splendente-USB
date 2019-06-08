@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Version-1.0.3-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
-- Copy data from ( target machine to USB key and USB key to target machine ) with an open session
+- Copy data from target machine to USB key and USB key to target machine with an open session
 
 ## Targets
 - Windows platform only
