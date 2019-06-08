@@ -41,10 +41,10 @@
 - `pip3 install -r Splendente-USB\requirement.txt`
 - Rename your USB key to 'USB_DATA'
 - Copy `Splendente-USB` repository into USB key labeled 'USB_DATA'
-- open powershell or cmd and move into your USB key `cd YourLetterKey:\`
-- Move into Splendente-USB directory in you USB key `cd Splendente-USB/splendente`
-- Packaged  `splendente_usb.py` with pyinstaller -> `pyinstaller --specpath setup/ --workpath setup/build --distpath setup/dist --clean -F --noconsole .\splendente_usb.py`  (this replace the existing executable in `Splendente-USB/splendente/setup/`)
-- (Optional) In `USB_DATA/Splendente-USB/agent/` directory, place your file that you want copy from USB to target
+- Open powershell or cmd and move into your USB key `cd YourLetterKey:\`
+- Move into Splendente-USB directory in your USB key `cd Splendente-USB/splendente`
+- Packaged  `splendente_usb.py` with pyinstaller -> `pyinstaller --specpath setup/ --workpath setup/build --distpath setup/dist --clean -F --noconsole .\splendente_usb.py`
+- (Optional) In `USB_DATA/Splendente-USB/agent/` directory place your file that you want copy from USB to target
 - Take the `Splendente-USB/rubber_ducky_script/duckycode.txt` file and encode it (https://ducktoolkit.com/encode#), then place the generated `inject.bin` file in your Rubber Ducky
 - Using a multi-USB adapter, insert your Rubber Ducky and USB key labeled "USB_DATA"
 - Plug in your USB adapter!
