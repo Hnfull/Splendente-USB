@@ -38,6 +38,7 @@
 
 ## Usages
 - Download Splendente-USB repos
+- If you download on zip format or other directly from github web site rename all `Splendente-USB-master`directory name into `Splendente-USB` 
 - `pip3 install -r Splendente-USB\requirement.txt`
 - Rename your USB key to 'USB_DATA'
 - Copy `Splendente-USB` repository into USB key labeled 'USB_DATA'
