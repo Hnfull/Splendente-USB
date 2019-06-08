@@ -58,7 +58,7 @@
     - USB_DATA/Splendente-USB/conf/splendente.ini                       -> Manage files and directories that you want copy
     - USB_DATA/Splendente-USB/log/splendente.log                        -> Traceability of actions
     - USB_DATA/Splendente-USB/splendente/splendente_usb.py              -> main python program
-    - USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe  -> main exe program packaged that will be executed by the rubber_ducky device   
+    - USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe  -> main exe program will be appear after launch of 'pyinstaller' command and that will be executed by the rubber_ducky device   
    ```
     
 - Rubber Ducky :
