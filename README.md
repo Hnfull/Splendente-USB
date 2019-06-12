@@ -79,7 +79,7 @@
 - Version 1.1.0
   - Several path additions
 
-## Licence
+## License
 - MIT
 
 ## Disclaimer
