@@ -53,8 +53,8 @@
 - Plug in your USB adapter!
 
 ## Directories of USB Tree 
-- USB key (USB_DATA) :
-| USB Tree | Descriptions |
+
+| USB key (USB_DATA) Tree | Descriptions |
 | ------ | ------ |
 | USB_DATA/Splendente-USB/data_* | directory of data copied from target, will be appear when after launch program |
 | USB_DATA/Splendente-USB/agent/ | copy file(s) from USB key to target + persistence (optional) |
@@ -62,21 +62,26 @@
 | USB_DATA/Splendente-USB/log/splendente.log | Traceability of actions |
 | USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe | main exe program will be appear after launch of 'pyinstaller' command and that will be executed by the rubber_ducky device |
 
-- Rubber Ducky :
-  ```
-    - yourRubberDucky/inject.bin
-  ``` 
+
+| Rubber Ducky Tree | Descriptions |
+| ------ | ------ |
+| yourRubberDucky/inject.bin | rubber ducky script compiled |
+
   
 ## Manage 
 - Manage the files and dirs that you want to copy:
-  ```
-  - Edit Splendente-USB/conf/splendente.ini
-  ``` 
-  
-## Todo
-- Version 1.1.0
-  - Several path additions
 
+ | Manage copies path | Descriptions |
+| ------ | ------ |
+| Splendente-USB/conf/splendente.ini | file that configures the copy of directories and file types of the target |
+
+## Todo
+- Version 1.1.0-x
+  - code optimization
+  - Several path additions
+  - Fix bug and problems
+  - Improved features already present
+  
 ## License
 - MIT
 
