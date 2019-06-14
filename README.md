@@ -67,14 +67,6 @@
 | ------ | ------ |
 | yourRubberDucky/inject.bin | rubber ducky script compiled |
 
-  
-## Manage 
-- Manage the files and dirs that you want to copy:
-
- | Manage copies path | Descriptions |
-| ------ | ------ |
-| Splendente-USB/conf/splendente.ini | file that configures the copy of directories and file types of the target |
-
 ## Todo
 - Version 1.1.0-x
   - code optimization
