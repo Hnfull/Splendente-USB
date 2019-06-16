@@ -22,7 +22,7 @@
 ## Installation
 `git clone https://github.com/Hnfull/Splendente-USB.git`
 
-`pip3 install -r Splendente-USB/requirement.txt`
+`pip3 install -r Splendente-USB/requirements.txt`
 
 ## Features
 - Copy file(s) from target directories to USB key : 
