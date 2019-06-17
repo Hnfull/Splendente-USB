@@ -12,9 +12,9 @@
 ## Target platforms tested
 - Windows 7-10
 
-## Requirement
+## Requirements
 - Python >= 3.5
-- requirement.txt
+- requirements.txt
 - 1 USB key
 - 1 Rubber Ducky
 - 1 Adaptator with USB multiport (In order to plug your rubber ducky and your USB key)
