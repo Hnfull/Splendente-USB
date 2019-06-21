@@ -55,11 +55,11 @@
 ## Directories of USB Tree 
 - USB key (USB_DATA) 
   ```
-  USB_DATA/Splendente-USB/data_* -> directory of data copied from target, will be appear when after launch program 
-  USB_DATA/Splendente-USB/agent/ -> copy file(s) from USB key to target + persistence (optional) 
-  USB_DATA/Splendente-USB/conf/splendente.ini -> Manage files and directories that you want copy 
-  USB_DATA/Splendente-USB/log/splendente.log  -> Traceability of actions 
-  USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe -> main exe program will be appear after launch of `pyinstaller` command and that will be executed by the rubber_ducky device 
+  USB_DATA/Splendente-USB/data_*    -> directory of data copied from target, will be appear when after launch program 
+  USB_DATA/Splendente-USB/agent/    -> copy file(s) from USB key to target + persistence (optional) 
+  USB_DATA/Splendente-USB/conf/splendente.ini   -> Manage files and directories that you want copy 
+  USB_DATA/Splendente-USB/log/splendente.log    -> Traceability of actions 
+  USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe    -> main exe program will be appear after launch of `pyinstaller` command and that will be executed by the rubber_ducky device 
   ```
 - Rubber Ducky
   ```
