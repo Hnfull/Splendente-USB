@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Version-1.0.3-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
-- Copy data from target machine to USB key and USB key to target machine with an open session
+- Copy data from target machine to USB key and  from USB key to target machine with an open session by connecting on target machine a multiports USB adapator that contained one rubber ducky and one usb key inserted
 
 ## Targets
 - Windows platform only
@@ -17,7 +17,7 @@
 - requirements.txt
 - 1 USB key
 - 1 Rubber Ducky
-- 1 Adaptator with USB multiport (In order to plug your rubber ducky and your USB key)
+- 1 Adaptator usb-c or usb 2.0 or 3.0 with USB multiports (In order to plug your rubber ducky and your USB key in same time)
 
 ## Installation
 `git clone https://github.com/Hnfull/Splendente-USB.git`
@@ -49,16 +49,16 @@
 - Packaged  `splendente_usb.py` with pyinstaller -> `pyinstaller --specpath setup/ --workpath setup/build --distpath setup/dist --clean -F --noconsole .\splendente_usb.py`
 - (Optional) In `USB_DATA/Splendente-USB/agent/` directory place your file that you want copy from USB to target
 - Take the `Splendente-USB/rubber_ducky_script/duckycode.txt` file and encode it (https://ducktoolkit.com/encode#), then place the generated `inject.bin` file in your Rubber Ducky
-- Using a multi-USB adapter, insert your Rubber Ducky and USB key labeled "USB_DATA"
+- Using a multi-USB adapter, insert your Rubber Ducky and USB key labeled 'USB_DATA'
 - Plug in your USB adapter!
 
 ## Directories of USB Tree 
 - USB key (USB_DATA) 
   ```
-  USB_DATA/Splendente-USB/data_*    -> directory of data copied from target, will be appear when after launch program 
-  USB_DATA/Splendente-USB/agent/    -> copy file(s) from USB key to target + persistence (optional) 
-  USB_DATA/Splendente-USB/conf/splendente.ini   -> Manage files and directories that you want copy 
-  USB_DATA/Splendente-USB/log/splendente.log    -> Traceability of actions 
+  USB_DATA/Splendente-USB/data_*                -> directory of data copied from target, will be appear when after launch program 
+  USB_DATA/Splendente-USB/agent/                -> copy file(s) from USB key to target + persistence (optional) 
+  USB_DATA/Splendente-USB/conf/splendente.ini   -> manage files and directories that you want copy 
+  USB_DATA/Splendente-USB/log/splendente.log    -> traceability of actions 
   USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe    -> main exe program will be appear after launch of `pyinstaller` command and that will be executed by the rubber_ducky device 
   ```
 - Rubber Ducky
