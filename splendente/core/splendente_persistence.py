@@ -28,6 +28,7 @@ class Persistence:
         self.targetRegisterType         = " /t REG_SZ"
         self.RegisterVersionALreadyUsed = []
 
+
     def Registry(self, agentUsbDirectory):
         if not os.listdir(agentUsbDirectory):
             return ERROR_FILE_NOT_FOUND

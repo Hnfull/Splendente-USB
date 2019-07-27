@@ -20,13 +20,16 @@ class Copy:
                     except Exception:
                         pass
     
+
     def SmallDepth(self, extension, usbDirectory, targetDirectory, size):
         Copy.Format(self, extension, usbDirectory, targetDirectory, size, "{0}\\{1}")
 
+    
     def MediumDepth(self, extension, usbDirectory, targetDirectory, size):
         Copy.Format(self, extension, usbDirectory, targetDirectory, size, "{0}\\{1}")
         Copy.Format(self, extension, usbDirectory, targetDirectory, size, "{0}\\*\\{1}")
 
+    
     def HighDepth(self, extension, usbDirectory, targetDirectory, size):
         Copy.Format(self, extension, usbDirectory, targetDirectory, size, "{0}\\{1}")
         Copy.Format(self, extension, usbDirectory, targetDirectory, size, "{0}\\*\\{1}")

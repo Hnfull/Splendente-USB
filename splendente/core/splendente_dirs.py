@@ -28,6 +28,7 @@ class Directories:
         self.usb            = "USB"
         self.target         = "Target"
 
+
     def Search(self, dirConf, typeOflist, targetMount, usbMount):
         targetDirectoriesList   = []
         usbDirectoriesList      = []
