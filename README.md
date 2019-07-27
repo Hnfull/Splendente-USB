@@ -9,7 +9,7 @@
 ## Targets
 - Windows platform only
 
-## Target platforms tested
+## Targets platforms tested
 - Windows 7-10
 
 ## Requirements
