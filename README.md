@@ -76,5 +76,8 @@
 ## License
 - MIT
 
+## Contact
+- Hnfull **gitland@protonmail.com**
+
 ## Disclaimer
 - Splendente-USB is for education/research purposes only. The author takes NO responsibility ay for how you choose to use any of the tools provided
