@@ -31,12 +31,14 @@
   - -> Pictures
   - -> Downloads
   - -> Desktop
-  - -> Firefox
   - -> Contacts
   - -> Dropbox
   - -> OneDrive
-  - -> Google Chrome
   - -> Outlook
+  - -> SSH keys
+  - -> Mozilla Firefox
+  - -> Google Chrome
+  - -> Microsoft Edge
   - -> Other mounted partitions 
   
 - Copy file(s) from USB key to target directory + persistence
