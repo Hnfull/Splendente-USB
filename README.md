@@ -1,7 +1,7 @@
 # Splendente-USB
 
 ![](https://img.shields.io/badge/Python->=3.5-blue.svg)
-![](https://img.shields.io/badge/Version-1.0.3-green.svg)
+![](https://img.shields.io/badge/Version-1.0.4-green.svg)
 ![](https://img.shields.io/badge/Licence-MIT-red.svg)
 
 - Copy data from target machine to USB key and  from USB key to target machine with an open session by connecting on target machine a multiports USB adapator that contained one rubber ducky and one usb key inserted
@@ -10,7 +10,7 @@
 - Windows platform only
 
 ## Targets platforms tested
-- Windows 7-10
+- Windows 7 & 10
 
 ## Requirements
 - Python >= 3.5

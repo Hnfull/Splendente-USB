@@ -49,8 +49,8 @@ from core.splendente_utils  import Date, SmallSize, MediumSize, HighSize, BigSiz
 from core.splendente_mount  import TargetMount, UsbMount
 from core.splendente_copy   import Copy
 from core.splendente_persistence import Persistence
-from core.splendente_error import ERROR_FILE_EMPTY, ERROR_FILE_NOT_FOUND, ERROR_BAD_ARGUMENTS, ERROR_BAD_ENVIRONMENT,\
-                                ERROR_INVALID_DRIVE, ERROR_PATH_NOT_FOUND, EXIT_SUCCESS
+from core.splendente_error  import ERROR_FILE_EMPTY, ERROR_FILE_NOT_FOUND, ERROR_BAD_ARGUMENTS, ERROR_BAD_ENVIRONMENT,\
+                                    ERROR_INVALID_DRIVE, ERROR_PATH_NOT_FOUND, EXIT_SUCCESS
 
 #--------------------------------------------------------- [Global] ---------------------------------------------------------#
 
@@ -159,11 +159,17 @@ def main():
                         elif re.match(r"^Firefox$", usbFolder):
                             copy.MediumDepth(conf.FirefoxBrowser(confUsbDirectory), usbFolderFound, targetPath, BigSize())
 
+                        elif re.match(r"^MicrosoftEdge$", usbFolder):
+                            copy.MediumDepth(conf.MicrosoftEdgeBrowser(confUsbDirectory), usbFolderFound, targetPath, BigSize())
+
                         elif re.match(r"(^Outlook$)|(^Contacts$)", usbFolder):
                             copy.MediumDepth(conf.Emails(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
 
                         elif re.match(r"^Pictures$", usbFolder):
                             copy.HighDepth(conf.Pictures(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
+
+                        elif re.match(r"^SSH$", usbFolder):
+                            copy.HighDepth(conf.SSH(confUsbDirectory), usbFolderFound, targetPath, MediumSize())
 
                         elif re.match(r"(^Documents$)|(^Downloads$)|(^Desktop$)|(^Dropbox$)|(^OneDrive$)", usbFolder):
                             copy.HighDepth(conf.Docs(confUsbDirectory), usbFolderFound, targetPath, HighSize())

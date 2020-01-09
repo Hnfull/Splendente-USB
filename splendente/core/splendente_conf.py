@@ -54,6 +54,13 @@ class Conf():
         return parseEmails
 
 
+    def SSH(self, confFile):
+        self.conf.read(confFile)
+        ssh = self.conf.get('EXTENSION', 'SSH')
+        parseSSH = ssh.split(",")
+        return parseSSH
+
+
     def FirefoxBrowser(self, confFile):
         self.conf.read(confFile)
         firefoxBrowser = self.conf.get('EXTENSION', 'FirefoxBrowser')
@@ -66,6 +73,13 @@ class Conf():
         chromeBrowser = self.conf.get('EXTENSION', 'ChromeBrowser')
         parseChromeBrowser = chromeBrowser.split(",")
         return parseChromeBrowser
+
+
+    def MicrosoftEdgeBrowser(self, confFile):
+        self.conf.read(confFile)
+        MicrosoftEdgeBrowser = self.conf.get('EXTENSION', 'MicrosoftEdgeBrowser')
+        parseMicrosoftEdgeBrowser = MicrosoftEdgeBrowser.split(",")
+        return parseMicrosoftEdgeBrowser
 
 
     def Directories(self, confFile):

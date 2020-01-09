@@ -22,11 +22,13 @@ class Directories:
         self.oneDrive       = "OneDrive"
         self.contacts       = "Contacts"
         self.outlook        = "Outlook"
+        self.ssh            = "SSH"
         self.firefox        = "Firefox"
         self.chrome         = "Chrome"
-        self.otherPartitions = "OtherPartitions"
+        self.microsoftEdge  = "MicrosoftEdge"
         self.usb            = "USB"
         self.target         = "Target"
+        self.otherPartitions = "OtherPartitions"
 
 
     def Search(self, dirConf, typeOflist, targetMount, usbMount):
@@ -79,6 +81,11 @@ class Directories:
                     targetDirectoriesList.append(os.environ["USERPROFILE"] + "\\Outlook")
                     usbDirectoriesList.append("Outlook")
 
+            elif directory == self.ssh:
+                if os.path.exists(os.environ["USERPROFILE"] + "\\.ssh") == True:
+                    targetDirectoriesList.append(os.environ["USERPROFILE"] + "\\.ssh")
+                    usbDirectoriesList.append("SSH")
+
             elif directory == self.firefox:
                 if os.path.exists(os.environ["APPDATA"] + "\\Mozilla\\Firefox\\Profiles") == True:
                     targetDirectoriesList.append(os.environ["APPDATA"] + "\\Mozilla\\Firefox\\Profiles")
@@ -88,6 +95,11 @@ class Directories:
                 if os.path.exists(os.environ["LOCALAPPDATA"] + "\\Google\\Chrome\\User Data\\Default") == True:
                     targetDirectoriesList.append(os.environ["LOCALAPPDATA"] + "\\Google\\Chrome\\User Data\\Default")
                     usbDirectoriesList.append("Chrome")
+            
+            elif directory == self.microsoftEdge:
+                if os.path.exists(os.environ["LOCALAPPDATA"] + "\\MicrosoftEdge\\User\\Default") == True:
+                    targetDirectoriesList.append(os.environ["LOCALAPPDATA"] + "\\MicrosoftEdge\\User\\Default")
+                    usbDirectoriesList.append("MicrosoftEdge")
 
             elif directory == self.otherPartitions:
                 for mount in targetMount:

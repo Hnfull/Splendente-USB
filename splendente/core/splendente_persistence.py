@@ -24,7 +24,7 @@ class Persistence:
                                         " /v windows_scheduler",
                                         " /v windows_network",
                                         " /v windows_scanning"
-                                        ] 
+                                    ] 
         self.targetRegisterType         = " /t REG_SZ"
         self.RegisterVersionALreadyUsed = []
 
