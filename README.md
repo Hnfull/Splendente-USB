@@ -44,7 +44,7 @@
 - Copy file(s) from USB key to target directory + persistence
 
 ## Usages
-- Rename your USB key to 'USB_DATA'
+- Rename your USB key to `USB_DATA`
 - Copy `Splendente-USB` repository into USB key labeled 'USB_DATA'
 - Open powershell or cmd and move into your USB key `cd YourLetterKey:\`
 - Since your USB key `cd Splendente-USB/splendente`
@@ -56,17 +56,14 @@
 
 ## Directories of USB Tree 
 - USB key (USB_DATA) 
-  ```
-  USB_DATA/Splendente-USB/data_*                -> directory of data copied from target, will be appear when after launch program 
-  USB_DATA/Splendente-USB/agent/                -> copy file(s) from USB key to target + persistence (optional) 
-  USB_DATA/Splendente-USB/conf/splendente.ini   -> manage files and directories that you want copy 
-  USB_DATA/Splendente-USB/log/splendente.log    -> traceability of actions 
-  USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe    -> main exe program will be appear after launch of `pyinstaller` command and that will be executed by the rubber_ducky device 
-  ```
+`USB_DATA/Splendente-USB/data_*` : directory of data copied from target, will be appear when after launch program 
+`USB_DATA/Splendente-USB/agent/` : copy file(s) from USB key to target + persistence (optional) 
+`USB_DATA/Splendente-USB/conf/splendente.ini` :  manage files and directories that you want copy 
+`USB_DATA/Splendente-USB/log/splendente.log` : traceability of actions 
+`USB_DATA/Splendente-USB/splendente/setup/dist/splendente_usb.exe` : main exe program will be appear after launch of `pyinstaller` command and that will be executed by the rubber_ducky device 
+
 - Rubber Ducky
-  ```
-  yourRubberDucky/inject.bin -> rubber ducky script compiled 
-  ```
+`yourRubberDucky/inject.bin` : rubber ducky script compiled 
 
 ## Todo
 - Version 1.0.0-x

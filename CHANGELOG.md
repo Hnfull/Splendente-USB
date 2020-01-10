@@ -1,4 +1,4 @@
-# CHANGELOG
+# CHANGELOG of Splendente-USB project
 
 ## 04-19-2019
 - [Add] version 1.0.0
@@ -6,22 +6,19 @@
 
 ## 05-05-2019
 - [Upgrade] version 1.0.1
-- [Add] new versions name of windows registers
-- [Update] Code improvement
+- [Add] new version names for windows registers when persistence of 3rd party program is perform
 
 ## 06-02-2019
 - [Upgrade] version 1.0.2
-- [Update] all name of .py files
-- [Delete] `Error` class
-- [Update] code improvement
+- [Update] all names of `.py` files
 
 ## 06-08-2019
 - [Upgrade] version 1.0.3
-- [Update] the way treat the paths to USB key
-- [Add] new folder -> (setup) to execute program packaged
-- [Update] rubber ducky script
+- [Update] paths to the USB key to access the executable pogram
+- [Add] new folder `Splendente-USB/splendente/setup` that is destination of execute program packaged from pyinstaller
+- [Update] rubber ducky script to change path of executable program of USB key
 
 ## 01-09-2020
 - [Upgrade] version 1.0.4
-- [Add] new path to copy SSH keys (userHome/.ssh)
-- [Add] new path to copy user data from microsfot edge browser (userHome/AppData/local/MicrosoftEdge/User/Default)
+- [Add] copy SSH keys of user from `user home/.ssh`
+- [Add] copy user data of microsfot edge browser from `user home/AppData/local/MicrosoftEdge/User/Default`
