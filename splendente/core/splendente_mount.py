@@ -20,7 +20,8 @@ class TargetMount():
 
     def SearchPartitionsMount(self):
         for mountPoint in SEARCH_WIN_MOUNT.Win32_LogicalDisk():
-            if mountPoint.VolumeName == "RECOVERY" or mountPoint.VolumeName == "USB_DATA" or mountPoint.DeviceID == "C:" or mountPoint.Description == "Disque CD-ROM":
+            if mountPoint.VolumeName == "RECOVERY" or mountPoint.VolumeName == "USB_DATA" \
+            or mountPoint.DeviceID == "C:" or mountPoint.Description == "Disque CD-ROM":
                 continue
             else:
                 self.targetPartitionsMountList.append(mountPoint.DeviceID + "\\")
@@ -44,7 +45,8 @@ class UsbMount():
 
     def SearchPartitionsMount(self):
         for mountPoint in SEARCH_WIN_MOUNT.Win32_LogicalDisk():
-            if mountPoint.VolumeName == "RECOVERY" or mountPoint.VolumeName == "USB_DATA" or mountPoint.DeviceID == "C:" or mountPoint.Description == "Disque CD-ROM":
+            if mountPoint.VolumeName == "RECOVERY" or mountPoint.VolumeName == "USB_DATA" \
+            or mountPoint.DeviceID == "C:" or mountPoint.Description == "Disque CD-ROM":
                 continue
             else:
                 mountPoint = mountPoint.DeviceID.replace(':', '')
