@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Splendente-USB
+
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import os
 import glob
 import re
-
-from core.splendente_error import ERROR_BAD_ARGUMENTS
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
@@ -116,7 +116,7 @@ class Directories:
         elif typeOflist == self.target:
             return targetDirectoriesList[:]
         else:
-            return ERROR_BAD_ARGUMENTS
+            return 1
 
 
             

@@ -1,5 +1,8 @@
 # CHANGELOG of Splendente-USB project
 
+## 03-10-2020
+- [Remove] splendente_error.py file, that contained useless feature to improve verbosity type of error during the reading of Splendente-USB code
+
 ## 01-09-2020
 - [Upgrade] version 1.0.4
 - [Add] copy SSH keys of user from `user home/.ssh`

